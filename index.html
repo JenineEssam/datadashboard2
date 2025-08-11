@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Women-Centered Drug Safety — Interactive Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo">W</div>
+        <div>
+          <div class="title">Women-Centered Drug Safety AI</div>
+          <div class="subtitle">Personalized medicine through female-focused analysis</div>
+        </div>
+      </div>
+      <div class="subtitle">8M+ clinical reports analyzed for women's health optimization</div>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="panel controls">
+      <div class="section-title"><h3>Patient Parameters</h3></div>
+      <div class="field">
+        <label class="muted">Biological Sex</label>
+        <div class="seg" style="margin-top:8px">
+          <button id="sex-m" class="active">Male</button>
+          <button id="sex-f">Female</button>
+        </div>
+      </div>
+      <div class="field">
+        <label class="muted">Age (years)</label>
+        <select id="age">
+          <option>18</option><option>25</option><option selected>35</option><option>45</option><option>60</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="muted">Medication</label>
+        <select id="medication">
+          <option value="sertraline">Sertraline (SSRI)</option>
+          <option value="amlodipine">Amlodipine (BP)</option>
+          <option value="metformin">Metformin (Diabetes)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="muted">Dosage</label>
+        <div class="slider-wrap">
+          <input id="dose" type="range" min="1" max="200" value="50">
+          <div class="slider-value"><span id="dose-value">50 mg</span></div>
+        </div>
+      </div>
+      <div class="field muted" style="font-size:13px">
+        Demo only. Replace computeRiskCurve(...) with a backend call later.
+      </div>
+    </div>
+
+    <!-- Analysis Panel -->
+    <div class="panel analysis">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <h3 style="margin:0">Risk Analysis</h3>
+        <div class="muted">Adverse Event Risk (% over time)</div>
+      </div>
+      <div class="chart-card" style="margin-top:12px">
+        <canvas id="riskChart"></canvas>
+      </div>
+      <div class="legend">
+        <div class="item"><div class="dot female"></div>Female</div>
+        <div class="item"><div class="dot male"></div>Male</div>
+      </div>
+      <div id="risk-diff" class="info-box warning">
+        <strong>Risk Difference:</strong> <span id="risk-diff-val">—</span>
+      </div>
+      <div id="recommend-box" class="info-box recommend">
+        <strong>Personalized Dosing</strong>
+        <div id="recommend-text"></div>
+      </div>
+      <div class="info-box">
+        <strong>Metabolic Insight</strong>
+        <div id="metab-text" class="muted"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
